@@ -15,7 +15,8 @@ $(document).ready(function () {
             type: 'post',
             // 基准路径：http://localhost:3002/api/v1/
             // 所有请求接口都需要拼接这个基地址
-            url: 'http://localhost:3002/api/v1/admin/user/login',
+            // url: 'http://localhost:3002/api/v1/admin/user/login',
+            url: BigNew.user_login,
             // ajax支持的参数类型常见的有：key=value&key1=value1    {key:value}    formData
             // 属性名称一定要参照后台接口
             data: {
