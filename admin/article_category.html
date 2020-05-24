@@ -31,25 +31,67 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>奇趣事</td>
-                        <td>funny</td>
-                        <td class="text-center">
-                            <a href="javascript:void(0)" data-toggle="modal" class=" btn btn-info btn-xs">编辑</a>
-                            <a href="javascript:void(0)" class="btn btn-danger btn-xs">删除</a>
-                        </td>
-                    </tr>
+
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3" class="text-center">
-                            <a href="javascript:void(0)" class="btn btn-success" id="xinzengfenlei" data-toggle="modal"
-                                data-target="#myModal">新增分类</a>
+                            <input type="button" class="btn btn-success" id="xinzengfenlei" data-toggle="modal"
+                                data-target="#myModal" value="新增分类">
                         </td>
                     </tr>
                 </tfoot>
             </table>
         </div>
     </div>
+    <!-- 添加模板结构 -->
+    <!-- 通过js代码：以后一般在满足业务条件的时候来显示，就会使用js -->
+    <!-- 如果直接操作一个dom显示，一般就会设置两个data属性 -->
+    <!-- 1.data-toggle='modal':说明当前可以实现模态框的显示-----固定写死 -->
+    <!-- 2.data-target="当前需要显示的模态框的id号" -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <!--新赠与编辑要进行复用 -->
+                    <h4 class="modal-title">新增分类</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" name="id" id="category_id">
+                        <div class="form-group">
+                            <label for="name">分类名称</label>
+                            <input type="text" class="form-control" id="name" placeholder="分类名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="slug">分类类别</label>
+                            <input type="text" class="form-control" id="slug" placeholder="分类类别">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary btn-add">新增</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <script type="text/template" id="category_temp">
+        {{each data}}
+            <tr>
+                <td>{{$value.name}}</td>
+                <td>{{$value.slug}}</td>
+                <td class="text-center">
+                    <input type="button" data-toggle="modal" class=" btn btn-info btn-xs btn-edit" data-target="#myModal" data-name='{{$value.name}}' data-slug='{{$value.slug}}' data-id="{{$value.id}}" value="编辑">
+                    <a href="javascript:void(0)" class="btn btn-danger btn-xs">删除
+                </td>
+            </tr>
+        {{/each}}
+    </script>
+    <script src="./libs/http.js"></script>
+    <script src="./js/article_category.js"></script>
+</body>
 
 </html>

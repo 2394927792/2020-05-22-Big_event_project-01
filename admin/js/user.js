@@ -48,8 +48,10 @@ $(document).ready(function () {
                 contentType: false,
                 success(res) {
                     console.log(res);
-                    console.log($('#form')[0]);
+                    /*  console.log($('#form')[0]);
+                     console.log(new FormData($('#form')[0])); */
                     alert(res.msg);
+                    window.parent.location.reload();
                 }
             })
         }
