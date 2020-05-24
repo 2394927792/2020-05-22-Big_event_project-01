@@ -49,6 +49,9 @@
     <!-- 如果直接操作一个dom显示，一般就会设置两个data属性 -->
     <!-- 1.data-toggle='modal':说明当前可以实现模态框的显示-----固定写死 -->
     <!-- 2.data-target="当前需要显示的模态框的id号" -->
+    <!-- 新增与编辑是共用一个模态框，本质上就是共用同一个按钮 -->
+    <!-- 在处理事件时，的判断当前的操作时新增还是编辑 -->
+    <!-- 根据代码进行判断按钮的文本是新增或是编辑 -->
     <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -59,7 +62,7 @@
                     <h4 class="modal-title">新增分类</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="myForm">
                         <input type="hidden" name="id" id="category_id">
                         <div class="form-group">
                             <label for="name">分类名称</label>
@@ -72,7 +75,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-primary btn-add">新增</button>
                 </div>
             </div><!-- /.modal-content -->
@@ -85,7 +88,7 @@
                 <td>{{$value.slug}}</td>
                 <td class="text-center">
                     <input type="button" data-toggle="modal" class=" btn btn-info btn-xs btn-edit" data-target="#myModal" data-name='{{$value.name}}' data-slug='{{$value.slug}}' data-id="{{$value.id}}" value="编辑">
-                    <a href="javascript:void(0)" class="btn btn-danger btn-xs">删除
+                    <input type="button" class="btn btn-danger btn-xs btn-del" value="删除" data-id="{{$value.id}}">
                 </td>
             </tr>
         {{/each}}
