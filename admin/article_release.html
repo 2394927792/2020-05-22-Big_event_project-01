@@ -40,11 +40,6 @@
                     <label for="inputCategory" class="col-sm-2 control-label">文章类别：</label>
                     <div class="col-sm-4">
                         <select class="form-control category" name="categoryId">
-                            <option>类别一</option>
-                            <option>类别二</option>
-                            <option>类别三</option>
-                            <option selected>类别四</option>
-                            <option>类别五</option>
                         </select>
                     </div>
                 </div>
@@ -67,6 +62,14 @@
             </form>
         </div>
     </div>
+    <!-- 文章分类的模板 -->
+    <script type="text/template" id="category_temp">
+        {{each data}}
+            <option value="{{$value.id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
+    <script src="./libs/http.js"></script>
+    <script src="./js/article_release.js"></script>
 </body>
 
 </html>

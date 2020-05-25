@@ -23,7 +23,7 @@ $(document).ready(function () {
             // 1.获取当前的所选择的文件对象
             let myFile = this.files[0];
             // 2.根据文件对象生成一个Url,它将这个文件托管到当前的页面服务器中，并且返回一个服务器中的路径
-            let url = URL.createObjectURL(myFile);
+            let url = URL.createObjectURL(myFile); 
             console.log(url);
             // 3.将url赋值给img的src属性
             $('.user_pic').attr('src', url);
