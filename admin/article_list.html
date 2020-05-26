@@ -78,7 +78,9 @@
                 <td class="text-center">{{$value.date}}</td>
                 <td class="text-center">{{$value.state}}</td>
                 <td class="text-center">
-                    <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
+                    <!-- 以超链接进行跳转的请求都是get请求 -->
+                    <!-- get请求传递参数的格式：协议://IP:端口/article_edit.html?key=value&key1=value1 -->
+                    <a href="./article_edit.html?id={{$value.id}}" class="btn btn-default btn-xs">编辑</a>
                     <a href="javascript:void(0);" class="btn btn-danger btn-xs delete" data-id='{{$value.id}}'>删除</a>
                 </td>
             </tr>

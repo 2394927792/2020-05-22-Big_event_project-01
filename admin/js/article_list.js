@@ -137,7 +137,7 @@ $(document).ready(function () {
                     // 判断当前表格中所剩下的数据行的数量，如果数量等于1，那么就要刷新到上一页
                     // 删除和刷新是两个不同的操作
                     // 代码到这删除操作已经完成
-                    if ($('tbody'.find('tr').length == 1)) {
+                    if ($('tbody').find('tr').length == 1) {
                         // 说明这里不是第一页，否则没法减
                         if (page > 1) {
                             page--;
@@ -148,4 +148,11 @@ $(document).ready(function () {
             }
         })
     })
+    /*发表文章
+        设置父窗口 发表文章高亮
+    */
+    $('#release_btn').click(function () {
+        //$() :第一个参数：选择器  第二个参数：document，默认是当前窗口document
+        $('.level02>li:eq(1)', window.parent.document).addClass('active') .siblings().removeClass('active');
+    });
 })
