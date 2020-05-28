@@ -16,7 +16,7 @@ $(document).ready(function () {
         success(res) {
             console.log(res);
             if (res.code == 200) {
-                $('.user_info > img').attr('src', res.data.userPic);
+                $('.user_info,.user_center_link').children('img').attr('src', res.data.userPic);
                 $('.user_info > span').html('欢迎您&nbsp;&nbsp;' + res.data.nickname);
             }
             /*  else if (res.status == 403) {
@@ -70,6 +70,18 @@ $(document).ready(function () {
     // 单击子项菜单切换样式
     $('.level02 > li').on('click', function () {
         $(this).addClass('active').siblings().removeClass('active');
+    })
+
+    // 实现退出
+    $('.logout').on({
+        click() {
+            // 删除token
+            // removeItem:清除指定的本地存储
+            // clear:全部清除
+            localStorage.removeItem('heban_bignews_token');
+            // 退回到登录页
+            location.href = './login.html';
+        }
     })
 
 
